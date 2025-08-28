@@ -18,6 +18,9 @@ def init_parser() -> argparse.ArgumentParser:
     parser.add_argument("-m", "--message",
                         default=False,
                         help="Overrides the message in whatsapp.json file.")
+    parser.add_argument("-c", "--country-code",
+                        default="+91",
+                        help="Change the Country Code.")
     
     return parser
     
@@ -32,7 +35,9 @@ def load_json(filename) -> dict:
 def main() -> None:
     arg_parser = init_parser()
     user_args = arg_parser.parse_args()
-    user_args = {"version":user_args.version, "message":user_args.message}
+    user_args = {"version":user_args.version, "message":user_args.message,
+                 "country code":user_args.country_code}
+    COUNTRY_CODE = user_args["country code"].lstrip(" ").rstrip(" ")
     if(user_args["version"]):
         print("The Current Version is: ", PROG_VERSION)
         return

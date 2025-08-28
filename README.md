@@ -30,14 +30,23 @@ A Python tool to automatically send WhatsApp notifications about Git events or c
    `Use the requirements.txt for testing and development. Not needed for running the Bot`
 
 ## Usage
+
 ### Command Line Arguments
 - `-V`, `--version`: Display the current build version.
 - `-m`, `--message`: Override the message in `whatsapp.json`.
+- `-c`, `--country-code`: Change the country code for WhatsApp numbers (default: +91).
+
 
 ### Example
 ```bash
+# Show version
 python main.py -V
+
+# Send a custom message
 python main.py -m "Custom message to send"
+
+# Change country code (e.g., to US)
+python main.py -c "+1" -m "Hello from the US!"
 ```
 
 ## Configuration
@@ -59,8 +68,9 @@ This file contains the message and the list of phone numbers to notify.
 - You can override the message using the `-m` argument.
 - For each number, the script sends an instant WhatsApp message using `pywhatkit`.
 
+
 ## Notes
-- The country code is set to `+91` (India) by default. Change `COUNTRY_CODE` in `main.py` if needed.
+- The country code is set to `+91` (India) by default, but can be changed using the `-c` or `--country-code` argument.
 - Make sure Chrome is installed and you are logged into WhatsApp Web.
 - The script will open a browser tab for each message sent.
 
